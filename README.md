@@ -1,27 +1,37 @@
-# Indian Parliament Infographic
+# Indian Parliament Explorer
 
-An interactive, browser-based visualization project for exploring Lok Sabha representation and parliamentary statistics.
+An independent, browser-based civic-data explorer for exploring parliamentary representation, member participation, party distribution, state representation and comparative statistics.
 
 **Live demo:** https://aaqibhafeezkhan.github.io/IndianParliamentInfographic/
 
-## Current scope
+## What changed
 
-The current application is a single-page Lok Sabha data explorer with interactive filters, parliamentary visualizations, member-oriented views, and responsive UI. The codebase currently lives in a single `index.html` file.
+The application has been rebuilt around a clearer product structure:
 
-## Roadmap
+- Overview dashboard with headline metrics, party representation, state representation and rankings.
+- Member directory with search, filtering, sorting and table/card modes.
+- Member profiles with participation, representation, declaration and derived-score views.
+- Analytics for gender, cabinet composition, attendance, education, age and party performance.
+- Side-by-side comparison for up to four members.
+- Responsive layouts for desktop and mobile.
+- Explicit distinction between embedded source data and calculated statistics.
+- Dedicated methodology and provenance surface.
+- CSV export of the currently filtered member set.
 
-The repository tracks a larger expansion toward a Parliament-wide explorer covering both Lok Sabha and Rajya Sabha, unified search and comparisons, stronger data provenance, reusable components, and a structured data layer.
+## Data architecture
 
-See the open repository issues for the active roadmap and cleanup work.
+The previous monolithic application has been preserved as `legacy.html` so the existing embedded dataset remains available while the application layer is modernized. The new `index.html` loads that dataset client-side and provides the redesigned experience.
 
-## Data and provenance
+The inherited dataset should be treated as a project dataset requiring validation, not as a claim of live parliamentary data. Parliamentary membership and statistics change over time and should be verified against authoritative sources before publication as current facts.
 
-Parliamentary information can change over time. The project should distinguish sourced facts from derived calculations and document the source and retrieval date for datasets as the application evolves.
+## Sources
 
-The repository now includes a dedicated provenance and methodology record in [`SOURCES.md`](SOURCES.md). It defines how source URLs, retrieval dates, dataset as-of dates, derived statistics, and reuse checks should be recorded as the project expands.
-
-This is an independent visualization project and is not an official Parliament of India or Digital Sansad product.
+See [`SOURCES.md`](SOURCES.md) for provenance, methodology, reuse guidance and preferred Digital Sansad references.
 
 ## Deployment
 
-The application is currently designed for GitHub Pages. The site is served as a static client-side application and does not require a server runtime.
+The project remains a static GitHub Pages application. No server runtime or GitHub Actions workflow is required.
+
+## Disclaimer
+
+Indian Parliament Explorer is an independent visualization project. It is not an official Parliament of India, Lok Sabha, Rajya Sabha or Digital Sansad product.
