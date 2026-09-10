@@ -1,0 +1,25 @@
+{
+  "datasetId": "lok-sabha-inherited-embedded",
+  "house": "Lok Sabha",
+  "coverage": "Inherited repository member dataset",
+  "status": "inherited-unverified",
+  "sourceType": "project-embedded-data",
+  "sourceUrl": "https://sansad.in/ls/ipg/list-of-members",
+  "retrievedAt": null,
+  "asOf": null,
+  "lastVerifiedAt": null,
+  "validation": {
+    "membership": "not-verified",
+    "attendance": "not-verified",
+    "questions": "not-verified",
+    "debates": "not-verified",
+    "bills": "not-verified",
+    "financialDeclarations": "not-verified",
+    "criminalCases": "not-verified"
+  },
+  "notes": [
+    "The inherited records are retained for continuity and must not be presented as live official data.",
+    "Retrieved-at and as-of dates are intentionally null until an authoritative refresh is performed.",
+    "Derived rankings, averages, percentages and scores must be calculated from the maintained dataset and labelled as derived."
+  ]
+}
