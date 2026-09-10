@@ -1,32 +1,32 @@
 # Indian Parliament Explorer
 
-An independent, browser-based civic-data explorer for exploring parliamentary representation, member participation, party distribution, state representation and comparative statistics.
+An independent, browser-based civic-data explorer for exploring current parliamentary representation from official Digital Sansad member sources.
 
 **Live demo:** https://aaqibhafeezkhan.github.io/IndianParliamentInfographic/
 
-## What changed
+## Current scope
 
-The application has been rebuilt around a clearer product structure:
+- Official-source Lok Sabha and Rajya Sabha member loading at runtime.
+- Overview of house, party and state representation.
+- Search and filtering across official member records.
+- Member profiles and side-by-side comparison.
+- Calculated representation analytics.
+- CSV export of the loaded official member directory.
+- Explicit provenance and data-freshness information.
+- Responsive GitHub Pages interface.
 
-- Overview dashboard with headline metrics, party representation, state representation and rankings.
-- Member directory with search, filtering, sorting and table/card modes.
-- Member profiles with participation, representation, declaration and derived-score views.
-- Analytics for gender, cabinet composition, attendance, education, age and party performance.
-- Side-by-side comparison for up to four members.
-- Responsive layouts for desktop and mobile.
-- Explicit distinction between embedded source data and calculated statistics.
-- Dedicated methodology and provenance surface.
-- CSV export of the currently filtered member set.
+## Data
 
-## Data architecture
+Production member data comes from Digital Sansad:
 
-The previous monolithic application has been preserved as `legacy.html` so the existing embedded dataset remains available while the application layer is modernized. The new `index.html` loads that dataset client-side and provides the redesigned experience.
+- Lok Sabha: https://sansad.in/ls/members
+- Rajya Sabha: https://sansad.in/rs/members
 
-The inherited dataset should be treated as a project dataset requiring validation, not as a claim of live parliamentary data. Parliamentary membership and statistics change over time and should be verified against authoritative sources before publication as current facts.
+The application does not use `legacy.html` as a production data source. The file remains only as an archive of the previous implementation.
 
-## Sources
+Performance and declaration fields such as attendance, questions, debates, bills, assets, liabilities and criminal cases are not invented or inherited from the archive. They remain unavailable until separately validated from authoritative records.
 
-See [`SOURCES.md`](SOURCES.md) for provenance, methodology, reuse guidance and preferred Digital Sansad references.
+See [`SOURCES.md`](SOURCES.md) for the full provenance and methodology policy.
 
 ## Deployment
 
