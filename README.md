@@ -2,7 +2,7 @@
 
 An interactive, browser-based visualization project for exploring Lok Sabha representation and parliamentary statistics.
 
-**Live demo:** https://aaqib-hafeez-khan-in.github.io/IndianParliamentInfographic/
+**Live demo:** https://aaqibhafeezkhan.github.io/IndianParliamentInfographic/
 
 ## Current scope
 
