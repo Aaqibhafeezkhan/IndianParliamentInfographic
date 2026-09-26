@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "scope": "Historical Parliament reference layer",
+  "note": "Chronology and official archive links only. Historical member records and political statistics are not reproduced here.",
+  "lokSabha": [
+    {
+      "house": "1st Lok Sabha",
+      "period": "1952–1957",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20First%20Lok%20Sabha"
+    },
+    {
+      "house": "2nd Lok Sabha",
+      "period": "1957–1962",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Second%20Lok%20Sabha"
+    },
+    {
+      "house": "3rd Lok Sabha",
+      "period": "1962–1967",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Third%20Lok%20Sabha"
+    },
+    {
+      "house": "4th Lok Sabha",
+      "period": "1967–1970",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Fourth%20Lok%20Sabha"
+    },
+    {
+      "house": "5th Lok Sabha",
+      "period": "1971–1977",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Fifth%20Lok%20Sabha"
+    },
+    {
+      "house": "6th Lok Sabha",
+      "period": "1977–1979",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Sixth%20Lok%20Sabha"
+    },
+    {
+      "house": "7th Lok Sabha",
+      "period": "1980–1984",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Seventh%20Lok%20Sabha"
+    },
+    {
+      "house": "8th Lok Sabha",
+      "period": "1984–1989",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Eighth%20Lok%20Sabha"
+    },
+    {
+      "house": "9th Lok Sabha",
+      "period": "1989–1991",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Ninth%20Lok%20Sabha"
+    },
+    {
+      "house": "10th Lok Sabha",
+      "period": "1991–1996",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Tenth%20Lok%20Sabha"
+    },
+    {
+      "house": "11th Lok Sabha",
+      "period": "1996–1998",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Eleventh%20Lok%20Sabha"
+    },
+    {
+      "house": "12th Lok Sabha",
+      "period": "1998–1999",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Twelfth%20Lok%20Sabha"
+    },
+    {
+      "house": "13th Lok Sabha",
+      "period": "1999–2004",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3A%20Thirteenth%20Lok%20Sabha"
+    },
+    {
+      "house": "14th Lok Sabha",
+      "period": "2004–2009",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3AFourteenth%20Lok%20Sabha"
+    },
+    {
+      "house": "15th Lok Sabha",
+      "period": "2009–2014",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3AFifteenth%20Lok%20Sabha"
+    },
+    {
+      "house": "16th Lok Sabha",
+      "period": "2014–2019",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3ASixteenth%20Lok%20Sabha"
+    },
+    {
+      "house": "17th Lok Sabha",
+      "period": "2019–2024",
+      "archiveUrl": "https://eparlib.sansad.in/simple-search?query=Whos%20Who%3ASeventeenth%20Lok%20Sabha"
+    },
+    {
+      "house": "18th Lok Sabha",
+      "period": "2024–present",
+      "archiveUrl": "https://eparlib.sansad.in/handle/123456789/3017150?view_type=browse"
+    }
+  ],
+  "rajyaSabha": {
+    "constituted": "3 April 1952",
+    "firstSitting": "13 May 1952",
+    "model": "Permanent body; one-third of membership is renewed every second year.",
+    "historyUrl": "https://cms.rajyasabha.nic.in/UploadedFiles/ElectronicPublications/Journey_1952.pdf",
+    "faqUrl": "https://sansad.in/rs/faq"
+  },
+  "sources": [
+    {
+      "name": "Parliament Digital Library",
+      "url": "https://eparlib.sansad.in/"
+    },
+    {
+      "name": "Digital Sansad Lok Sabha FAQ",
+      "url": "https://sansad.in/ls/faq"
+    },
+    {
+      "name": "Rajya Sabha FAQ",
+      "url": "https://sansad.in/rs/faq"
+    },
+    {
+      "name": "Rajya Sabha: The Journey Since 1952",
+      "url": "https://cms.rajyasabha.nic.in/UploadedFiles/ElectronicPublications/Journey_1952.pdf"
+    }
+  ]
+}

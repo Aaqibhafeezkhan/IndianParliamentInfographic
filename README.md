@@ -13,6 +13,7 @@ An independent, browser-based civic-data explorer for exploring current parliame
 - Calculated representation analytics.
 - CSV export of the loaded official member directory.
 - Explicit provenance and data-freshness information.
+- Historical Parliament reference timeline with official archival links.
 - Responsive GitHub Pages interface.
 
 ## Data
@@ -27,6 +28,8 @@ The application does not use `legacy.html` as a production data source. The file
 Performance and declaration fields such as attendance, questions, debates, bills, assets, liabilities and criminal cases are not invented or inherited from the archive. They remain unavailable until separately validated from authoritative records.
 
 See [`SOURCES.md`](SOURCES.md) for the full provenance and methodology policy.
+
+The **History** view indexes the 1st–18th Lok Sabha chronology and links to the Parliament Digital Library for historical member research. Rajya Sabha history is linked to official Rajya Sabha publications. Historical political statistics and complete historical membership datasets are not embedded unless separately validated.
 
 ## Deployment
 
