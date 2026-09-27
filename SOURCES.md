@@ -48,3 +48,16 @@ A data correction should identify the affected field, official source used for v
 The application exposes a chronological reference layer in `data/history.json`. It records the 1st through 18th Lok Sabha periods and links to the Parliament Digital Library for historical “Who’s Who” research. The project intentionally does not copy a large historical membership dataset into production until each dataset is separately validated.
 
 Rajya Sabha historical context is linked to the official Rajya Sabha FAQ and *Rajya Sabha: The Journey Since 1952*. The official Rajya Sabha FAQ records that the House was first constituted on 3 April 1952 and first met on 13 May 1952, and describes it as a continuing chamber.
+
+
+## Parliamentary activity resources
+
+The Activity view links directly to official parliamentary resources. It does not copy activity records into the application.
+
+- Lok Sabha: https://sansad.in/ls/siteMap
+- Lok Sabha House Business: https://sansad.in/ls/business
+- Lok Sabha Committee Members: https://sansad.in/ls/committee/committee-members
+- Rajya Sabha House Business: https://sansad.in/rs/house-business
+- Rajya Sabha Dashboard: https://sansad.in/rs/dashboard
+- Rajya Sabha Sitemap: https://sansad.in/rs/siteMap
+- Parliament Digital Library: https://eparlib.sansad.in/
