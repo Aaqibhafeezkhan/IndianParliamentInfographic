@@ -1,9 +1,15 @@
 # Parliament data layer
 
-This directory is the structured-data boundary for the explorer.
+This directory contains the normalized data contract, official source metadata, historical reference chronology, and the production browser loader.
 
-The current member records are still inherited from the preserved `legacy.html` dataset. They are intentionally classified as `inherited-unverified` until an authoritative refresh is performed.
+- `official-loader.js` loads current member records directly from the official Digital Sansad endpoints. It normalizes the two Houses to a common record shape and reports partial source failures rather than silently treating a partial load as complete.
+- `metadata.json` records the source URLs, intended coverage, and runtime freshness contract.
+- `schema.json` classifies fields and defines the normalized House enum.
+- `history.json` contains historical chronology and official archive links, not a copied historical membership dataset.
+- `loader.js` is a legacy transitional loader retained for reference only; it reads `legacy.html` and must not be used by the production app.
 
-`metadata.json` records the intended provenance contract. `schema.json` classifies the fields used by the application. `loader.js` provides a single loader and validation boundary for the transitional dataset.
+## Refresh and validation
 
-A future refresh should replace the inherited source with a versioned machine-readable member dataset and populate `retrievedAt`, `asOf`, `lastVerifiedAt` and field-level validation status. The application should then consume that dataset without parsing HTML.
+Run `node scripts/validate-data.mjs` for offline repository-contract checks. Run `node scripts/check-live-data.mjs` to fetch both current official sources and validate response shape, record IDs, duplicate IDs, names, and basic completeness. The live checker emits counts and quality summaries only; it does not persist source records.
+
+Before creating a redistributable snapshot, first verify the source terms and record permission in `DATA-LICENSE.md`. Runtime availability is not proof of redistribution rights.

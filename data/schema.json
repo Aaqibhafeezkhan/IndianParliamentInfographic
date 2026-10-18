@@ -20,5 +20,13 @@
   "isCabinet": "source-backed-at-as-of-date",
   "yearsInPolitics": "derived-or-source-backed",
   "localProjectsFunded": "source-backed-or-unverified",
-  "derivedScore": "derived"
+  "derivedScore": "derived",
+  "house": {
+    "type": "enum",
+    "values": [
+      "Lok Sabha",
+      "Rajya Sabha"
+    ],
+    "source": "official-source"
+  }
 }
