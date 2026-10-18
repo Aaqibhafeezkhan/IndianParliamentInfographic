@@ -31,6 +31,10 @@ The application records the retrieval time for each browser session. "Current" m
 
 `legacy.html` is retained as an archival copy of the previous application. It is not used by the production loader and must not be treated as an authoritative data source.
 
+## Data correction reporting
+
+Use the [repository issue form](https://github.com/Aaqibhafeezkhan/IndianParliamentInfographic/issues/new?template=blank) to report a discrepancy. Include the member name/ID, field, official source URL, retrieval timestamp, and relevant as-of date. Reports should be checked against the cited primary source before changing the application.
+
 ## Reuse
 
 The repository links to official sources for validation. Public accessibility does not automatically grant unrestricted rights to reproduce protected images, logos, PDFs or other assets. Third-party material should be reused only where its terms permit it.
@@ -38,6 +42,10 @@ The repository links to official sources for validation. Public accessibility do
 ## Independent project disclaimer
 
 **Indian Parliament Explorer is an independent visualization project. It is not an official Parliament of India, Lok Sabha, Rajya Sabha or Digital Sansad product.**
+
+## Shareable navigation and member links
+
+The interface stores non-default view and member-directory filter values in the page URL. Member profiles can be opened directly with a `#member=` fragment. These links identify a member record from the live official-source response; they do not freeze a historical snapshot. A shared link may show no member if that record is no longer returned by the official endpoint.
 
 ## Correction policy
 
