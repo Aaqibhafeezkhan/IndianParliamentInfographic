@@ -1,45 +1,35 @@
 # Data Sources & Methodology
 
-Indian Parliament Explorer is an offline-first viewer. Member records are supplied by the user through CSV or JSON import and stored in the browser. The production application does not call Digital Sansad APIs and does not bundle official member records.
+Indian Parliament Explorer automatically loads member records from the published JSON snapshots maintained by RTI Wiki. The application does not call Digital Sansad APIs directly.
 
-## Reference sources
+## Member data sources
 
-| Dataset | Official reference directory | Application behavior |
-| --- | --- | --- |
-| Lok Sabha | https://sansad.in/ls/members | Manual verification or preparation of an imported file |
-| Rajya Sabha | https://sansad.in/rs/members | Manual verification or preparation of an imported file |
+| Dataset | Runtime JSON source | Underlying source | Snapshot date |
+| --- | --- | --- | --- |
+| Lok Sabha | https://righttoinformation.wiki/static/data/ls-mps.json | Digital Sansad member directory / `sansad.in/api_ls/member` | Read from `meta.as_of` at runtime |
+| Rajya Sabha | https://righttoinformation.wiki/static/data/rs-mps.json | Rajya Sabha Secretariat member directory at `rsdoc.nic.in/MemberGetData/getmemberall` | Read from `meta.as_of` at runtime |
 
-These links are references only. The member directory, search, filters, analytics, comparison, profiles and CSV export do not require access to these websites.
+Provider dataset catalogue and licensing: https://righttoinformation.wiki/static/data/csv/
 
-## Import contract
+The provider states that the member snapshots are regenerated weekly and publishes them under **Creative Commons Attribution 4.0 International (CC BY 4.0)**. Attribution: **RTI Wiki — righttoinformation.wiki**.
 
-The app accepts CSV with a header row or JSON arrays / objects containing a `members`, `data` or `records` array. Member name and House are required. Party, state/UT, constituency, status, terms and biographical fields are optional. House values normalize to `Lok Sabha` or `Rajya Sabha`.
+## Loading and caching
 
-Imported records are labelled user-provided. The app records the local import timestamp and filename; it does not infer source publication date, verification status or current membership status. Data is stored in browser local storage and is not uploaded.
+On first visit, the application requests both JSON snapshots and validates that each contains a metadata object and a sufficiently sized members array. It maps only the fields needed by the explorer into a normalized member record.
 
-## Derived values and freshness
+After a successful load, the normalized records are cached in browser local storage. On later visits, cached records are rendered immediately while the application checks the remote snapshots again. A failed refresh does not replace or delete the last successful cache. The Refresh data control retries the same sources.
 
-Counts, party shares, state shares, House totals, rankings and comparisons are calculated from imported records. The import timestamp indicates when the file was loaded, not its data as-of date. Users should verify the actual source and date before drawing current conclusions. Once the page is loaded, member calculations and directory interactions use the saved local records without a member-data API request. A later visit still requires the static site assets to load.
+The app displays each source's `meta.as_of` value separately from the browser retrieval timestamp. The source date is the provider's stated snapshot date, not a claim that every field was independently checked on that date. If a source snapshot is stale, the app may also be stale.
 
-## Archive and reuse
+## Normalized fields
 
-`legacy.html` is archival only and is not loaded by the production app. Public accessibility does not automatically grant rights to reproduce protected datasets, photographs, logos or PDFs. The app does not download official records or redistribute an official-source snapshot. Users are responsible for confirming the permitted use of files they import.
+The application maps member name, House, party, state/UT, constituency where available, sitting status, terms, age, gender, profession and education where present. Rajya Sabha term information is displayed from the available oath and term-end dates. Optional values remain unavailable when the source does not provide them.
 
-## Correction reporting
-
-Use the [repository issue form](https://github.com/Aaqibhafeezkhan/IndianParliamentInfographic/issues/new?template=blank). Include member name/ID, field, dataset filename, as-of date if known, and reference URL.
-
-## Independent project
-
-**Indian Parliament Explorer is an independent visualization project. It is not an official Parliament of India, Lok Sabha, Rajya Sabha or Digital Sansad product.**
-
-## Shareable navigation
-
-View and filter state is stored in the URL. Member profile fragments identify records in the locally imported dataset; recipients must import a compatible dataset in their own browser for those links to resolve.
+Attendance, questions, debates, bills, assets, liabilities and criminal-case fields are not inferred from biographical records. Derived counts and representation statistics are calculated from the loaded member records.
 
 ## Historical and activity references
 
-The History view links to Parliament Digital Library material. The Activity view links to official parliamentary resources and does not copy activity records into the app.
+The History view links to Parliament Digital Library material. The Activity view links to official parliamentary resources and does not calculate member performance rankings.
 
 - Lok Sabha: https://sansad.in/ls/siteMap
 - Lok Sabha House Business: https://sansad.in/ls/business
@@ -48,3 +38,7 @@ The History view links to Parliament Digital Library material. The Activity view
 - Rajya Sabha Dashboard: https://sansad.in/rs/dashboard
 - Rajya Sabha Sitemap: https://sansad.in/rs/siteMap
 - Parliament Digital Library: https://eparlib.sansad.in/
+
+## Independent project
+
+**Indian Parliament Explorer is an independent visualization project. It is not an official Parliament of India, Lok Sabha, Rajya Sabha or Digital Sansad product.**
