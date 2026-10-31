@@ -1,11 +1,11 @@
 # Parliament data layer
 
-- `loader.js` parses CSV/JSON member files, normalizes both Houses, validates required fields and duplicate IDs, and stores successful imports in browser local storage.
-- `metadata.json` records the offline-first import contract and official reference links. It contains no member records.
+- `loader.js` retrieves the RTI Wiki Lok Sabha and Rajya Sabha JSON snapshots, validates their metadata and record counts, normalizes the member fields used by the app, and caches successful loads in browser storage.
+- `metadata.json` records the automatic-load contract, source URLs, attribution and freshness behavior.
 - `schema.json` defines the normalized member contract.
 - `history.json` contains historical chronology and official archive links, not a historical member dataset.
-- The previous runtime Sansad API loader has been removed.
+- The production application does not call Digital Sansad APIs directly.
 
-Use **Import data** in the app to load a CSV or JSON file. The file remains in the current browser profile and is not uploaded. Successful imports persist after reload. While the page is loaded, member workflows use the saved data without calling an external member API.
+Visitors do not upload a file. On first visit the app loads both published snapshots. On later visits it renders cached data immediately and checks the sources again. A failed refresh leaves the previous cache untouched. The UI displays the source as-of date separately from the local retrieval timestamp.
 
-Run `node scripts/validate-data.mjs` and `node scripts/test-import.mjs` for local checks. No official member snapshot is bundled because permission to redistribute the source compilation has not been confirmed.
+The provider catalogue is https://righttoinformation.wiki/static/data/csv/ and identifies the member snapshots as CC BY 4.0. Attribution: RTI Wiki — righttoinformation.wiki.

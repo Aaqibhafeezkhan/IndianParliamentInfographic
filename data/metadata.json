@@ -1,21 +1,29 @@
 {
-  "dataMode": "offline-first",
-  "memberData": "user-imported",
-  "storage": "browser-local-storage",
-  "externalMemberDataRequests": false,
+  "dataMode": "automatic-remote-snapshot",
+  "memberData": "provider-published-json",
+  "provider": "RTI Wiki",
+  "providerLicense": "CC BY 4.0",
+  "attribution": "RTI Wiki - righttoinformation.wiki",
+  "storage": "browser-local-storage-cache",
+  "externalMemberDataRequests": true,
+  "directSansadApiRequests": false,
   "localStaticResources": true,
-  "officialReferenceSources": {
+  "sources": {
+    "lokSabha": "https://righttoinformation.wiki/static/data/ls-mps.json",
+    "rajyaSabha": "https://righttoinformation.wiki/static/data/rs-mps.json",
+    "catalogue": "https://righttoinformation.wiki/static/data/csv/"
+  },
+  "underlyingSources": {
     "lokSabha": "https://sansad.in/ls/members",
     "rajyaSabha": "https://sansad.in/rs/members"
   },
-  "importFormats": [
-    "csv",
-    "json"
-  ],
-  "requiredFields": [
-    "name",
-    "house"
-  ],
+  "requiredPayloadFields": ["meta", "members"],
+  "minimumRecords": {
+    "lokSabha": 400,
+    "rajyaSabha": 200
+  },
+  "cacheBehavior": "Render cached data immediately and replace it only after both remote snapshots validate successfully.",
+  "freshness": "Display each source meta.as_of separately from browser retrieval time.",
   "unvalidatedFields": [
     "attendance",
     "questionsAsked",
@@ -25,11 +33,5 @@
     "liabilitiesInCr",
     "criminalCases"
   ],
-  "derivedFields": [
-    "counts",
-    "shares",
-    "rankings",
-    "comparisons"
-  ],
-  "productionRule": "Do not load legacy.html or call Digital Sansad APIs from the production application. Do not bundle official member records without confirmed reuse permission."
+  "derivedFields": ["counts", "shares", "rankings", "comparisons"]
 }

@@ -1,47 +1,37 @@
 # Indian Parliament Explorer
 
-An independent browser-based civic-data explorer for parliamentary representation across Lok Sabha and Rajya Sabha using a locally imported member dataset.
+An independent browser-based civic-data explorer for parliamentary representation across Lok Sabha and Rajya Sabha.
 
 **Live demo:** https://aaqibhafeezkhan.github.io/IndianParliamentInfographic/
 
 ## Features
 
-- Offline-first member explorer for both Houses.
-- CSV and JSON import with normalization and validation.
-- Local browser persistence; member workflows use the saved records rather than a live member API.
+- Automatic first-visit loading of Lok Sabha and Rajya Sabha member records.
+- Browser caching and a manual **Refresh data** action.
+- Source snapshot dates and browser retrieval time shown separately.
 - Overview, search, filtering, sorting, analytics and cross-House comparisons.
 - Member profiles, shareable view/filter URLs and filtered CSV export.
 - Historical Parliament reference timeline and official activity links.
 - Responsive GitHub Pages interface.
 
-## Import member data
+## Automatic member data
 
-The application does not call the Digital Sansad API and does not bundle official member records. This removes the external API as a runtime dependency without assuming permission to redistribute official records.
+Visitors do not need to upload a file. The application retrieves the two published JSON snapshots from RTI Wiki:
 
-1. Select **Import data** in the header.
-2. Choose a CSV file with a header row or a JSON array.
-3. A JSON object may wrap records in a `members`, `data` or `records` array.
-4. The app validates and normalizes the records, then saves them in the current browser.
-5. Once the page is loaded, disconnect from the network; member search, filters, analytics, comparisons, profiles and export continue using the saved data. A later visit still needs the static site assets to load.
+- Lok Sabha: https://righttoinformation.wiki/static/data/ls-mps.json
+- Rajya Sabha: https://righttoinformation.wiki/static/data/rs-mps.json
 
-Recognized headings include `name`/`memberName`, `house`/`chamber`, `party`/`partyName`, `state`/`stateName`, `constituency`/`constName`, `id`/`memberId`, `status`, `age`, `gender`, `terms`/`totalTerms`, `termList`/`term`, `profession`, `education`/`qualification`, and `officialProfile`/`profileUrl`.
+The snapshots are attributed to RTI Wiki and are published under **CC BY 4.0**. The underlying member records are sourced from Digital Sansad / the Rajya Sabha Secretariat, with some biographical enrichment from Wikipedia. See [SOURCES.md](SOURCES.md) and [DATA-LICENSE.md](DATA-LICENSE.md).
 
-Member name and House are required. House values may be `Lok Sabha`/`LS` or `Rajya Sabha`/`RS`. Optional missing values remain unavailable. IDs are generated from House and name when absent. Duplicate IDs and unsupported House values are rejected; a failed import does not replace the previous saved dataset.
+The app caches a successful response in browser storage. On later visits it displays the cached records immediately and checks the source again. If a refresh fails, the last successful cache remains available. Use **Refresh data** to retry manually.
 
-Official reference directories:
-
-- Lok Sabha: https://sansad.in/ls/members
-- Rajya Sabha: https://sansad.in/rs/members
-
-Imported records are user-provided. The local import timestamp is not a source publication date or proof of currentness or verification. Check source terms before copying or redistributing records. Use **Clear data** to remove the local dataset. Browser storage is not synchronized across devices.
+The source's `meta.as_of` date is shown separately from the browser retrieval timestamp. A successful download does not mean the source snapshot is real-time or independently verified by this project. Check the displayed as-of dates before relying on time-sensitive membership details.
 
 ## Data integrity
 
-Attendance, questions, debates, bills, assets, liabilities and criminal-case values are not invented. Counts, shares, rankings and comparisons are derived from the imported records.
+Only fields present in the source snapshots are mapped into the explorer. Attendance, questions, debates, bills, assets, liabilities and criminal-case values remain unavailable unless separately validated from authoritative records. Counts, shares, rankings and comparisons are derived from the loaded member records.
 
-See [`SOURCES.md`](SOURCES.md), [`DATA-LICENSE.md`](DATA-LICENSE.md), and [`LICENSE.md`](LICENSE.md).
-
-The **History** view links to official historical archives without embedding an unvalidated historical membership dataset. The **Activity** view links to official parliamentary resources but does not calculate member performance rankings.
+The application does not call Digital Sansad APIs directly. It retrieves the published RTI Wiki JSON files, so member data loading does not depend on the Sansad API being available to each visitor.
 
 ## Validation
 
@@ -52,11 +42,9 @@ node scripts/validate-data.mjs
 node scripts/test-import.mjs
 ```
 
-Both checks run locally without network requests.
-
 ## Deployment
 
-The project remains a static GitHub Pages application. No server runtime or GitHub Actions workflow is required.
+The project remains a static GitHub Pages application. No server runtime is required.
 
 ## Disclaimer
 
