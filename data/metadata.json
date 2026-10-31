@@ -1,27 +1,35 @@
 {
-  "datasets": {
-    "lokSabha": {
-      "house": "Lok Sabha",
-      "coverage": "18th Lok Sabha sitting members",
-      "sourceUrl": "https://sansad.in/ls/members",
-      "apiUrl": "https://sansad.in/api_ls/member",
-      "retrievedAt": "runtime",
-      "asOf": "runtime-current-source",
-      "validation": "official Digital Sansad API response",
-      "status": "official-source"
-    },
-    "rajyaSabha": {
-      "house": "Rajya Sabha",
-      "coverage": "Current sitting members",
-      "sourceUrl": "https://sansad.in/rs/members",
-      "apiUrl": "https://sansad.in/api_rs/member/sitting-members",
-      "retrievedAt": "runtime",
-      "asOf": "runtime-current-source",
-      "validation": "official Digital Sansad API response",
-      "status": "official-source"
-    }
+  "dataMode": "offline-first",
+  "memberData": "user-imported",
+  "storage": "browser-local-storage",
+  "externalMemberDataRequests": false,
+  "localStaticResources": true,
+  "officialReferenceSources": {
+    "lokSabha": "https://sansad.in/ls/members",
+    "rajyaSabha": "https://sansad.in/rs/members"
   },
-  "productionRule": "The application must not use legacy.html as a production data source.",
-  "unvalidatedFields": ["attendance","questionsAsked","debatesParticipated","billsIntroduced","assetsInCr","liabilitiesInCr","criminalCases"],
-  "derivedFields": ["counts","shares","rankings","comparisons"]
+  "importFormats": [
+    "csv",
+    "json"
+  ],
+  "requiredFields": [
+    "name",
+    "house"
+  ],
+  "unvalidatedFields": [
+    "attendance",
+    "questionsAsked",
+    "debatesParticipated",
+    "billsIntroduced",
+    "assetsInCr",
+    "liabilitiesInCr",
+    "criminalCases"
+  ],
+  "derivedFields": [
+    "counts",
+    "shares",
+    "rankings",
+    "comparisons"
+  ],
+  "productionRule": "Do not load legacy.html or call Digital Sansad APIs from the production application. Do not bundle official member records without confirmed reuse permission."
 }
