@@ -1,70 +1,49 @@
 # Data Sources & Methodology
 
-Indian Parliament Explorer uses official Digital Sansad member sources for production membership data.
+Indian Parliament Explorer is an offline-first viewer. Member records are supplied by the user through CSV or JSON import and stored in the browser. The production application does not call Digital Sansad APIs and does not bundle official member records.
 
-## Production sources
+## Reference sources
 
-| Dataset | Official source | API | Coverage |
-| --- | --- | --- | --- |
-| Lok Sabha | https://sansad.in/ls/members | https://sansad.in/api_ls/member | 18th Lok Sabha sitting members |
-| Rajya Sabha | https://sansad.in/rs/members | https://sansad.in/api_rs/member/sitting-members | Current sitting members |
+| Dataset | Official reference directory | Application behavior |
+| --- | --- | --- |
+| Lok Sabha | https://sansad.in/ls/members | Manual verification or preparation of an imported file |
+| Rajya Sabha | https://sansad.in/rs/members | Manual verification or preparation of an imported file |
 
-Digital Sansad is the Parliament of India's official digital platform. The explorer retrieves member records at runtime so the displayed membership data reflects the official endpoints available when the page is loaded. The retrieval timestamp is shown in the application.
+These links are references only. The member directory, search, filters, analytics, comparison, profiles and CSV export do not require access to these websites.
 
-## Source-backed fields
+## Import contract
 
-The explorer treats member identity, house, party, state/UT, constituency where supplied, membership status, terms and available biographical fields as source-backed when returned by the official endpoint.
+The app accepts CSV with a header row or JSON arrays / objects containing a `members`, `data` or `records` array. Member name and House are required. Party, state/UT, constituency, status, terms and biographical fields are optional. House values normalize to `Lok Sabha` or `Rajya Sabha`.
 
-## Fields deliberately not inferred
+Imported records are labelled user-provided. The app records the local import timestamp and filename; it does not infer source publication date, verification status or current membership status. Data is stored in browser local storage and is not uploaded.
 
-Attendance, questions, debates, bills, assets, liabilities and criminal cases are not copied from the archived dataset and are not guessed from third-party sources. They remain unavailable until separately validated against authoritative records for the relevant scope and date.
+## Derived values and freshness
 
-## Derived values
+Counts, party shares, state shares, House totals, rankings and comparisons are calculated from imported records. The import timestamp indicates when the file was loaded, not its data as-of date. Users should verify the actual source and date before drawing current conclusions. Once the page is loaded, member calculations and directory interactions use the saved local records without a member-data API request. A later visit still requires the static site assets to load.
 
-Counts, party shares, state shares, house totals, rankings and comparisons are calculated from the official member records loaded by the application. They are derived statistics, not directly sourced facts.
+## Archive and reuse
 
-## Freshness
+`legacy.html` is archival only and is not loaded by the production app. Public accessibility does not automatically grant rights to reproduce protected datasets, photographs, logos or PDFs. The app does not download official records or redistribute an official-source snapshot. Users are responsible for confirming the permitted use of files they import.
 
-The application records the retrieval time for each browser session. "Current" means current to the official endpoint response at retrieval time; it does not mean permanently current. Historical snapshots require a separately versioned dataset with an explicit as-of date.
+## Correction reporting
 
-## Archive
+Use the [repository issue form](https://github.com/Aaqibhafeezkhan/IndianParliamentInfographic/issues/new?template=blank). Include member name/ID, field, dataset filename, as-of date if known, and reference URL.
 
-`legacy.html` is retained as an archival copy of the previous application. It is not used by the production loader and must not be treated as an authoritative data source.
-
-## Data correction reporting
-
-Use the [repository issue form](https://github.com/Aaqibhafeezkhan/IndianParliamentInfographic/issues/new?template=blank) to report a discrepancy. Include the member name/ID, field, official source URL, retrieval timestamp, and relevant as-of date. Reports should be checked against the cited primary source before changing the application.
-
-## Reuse
-
-The repository links to official sources for validation. Public accessibility does not automatically grant unrestricted rights to reproduce protected images, logos, PDFs or other assets. Third-party material should be reused only where its terms permit it.
-
-## Independent project disclaimer
+## Independent project
 
 **Indian Parliament Explorer is an independent visualization project. It is not an official Parliament of India, Lok Sabha, Rajya Sabha or Digital Sansad product.**
 
-## Shareable navigation and member links
+## Shareable navigation
 
-The interface stores non-default view and member-directory filter values in the page URL. Member profiles can be opened directly with a `#member=` fragment. These links identify a member record from the live official-source response; they do not freeze a historical snapshot. A shared link may show no member if that record is no longer returned by the official endpoint.
+View and filter state is stored in the URL. Member profile fragments identify records in the locally imported dataset; recipients must import a compatible dataset in their own browser for those links to resolve.
 
-## Correction policy
+## Historical and activity references
 
-A data correction should identify the affected field, official source used for verification, retrieval date and the scope/as-of date of the corrected record.
-
-## Historical reference layer
-
-The application exposes a chronological reference layer in `data/history.json`. It records the 1st through 18th Lok Sabha periods and links to the Parliament Digital Library for historical “Who’s Who” research. The project intentionally does not copy a large historical membership dataset into production until each dataset is separately validated.
-
-Rajya Sabha historical context is linked to the official Rajya Sabha FAQ and *Rajya Sabha: The Journey Since 1952*. The official Rajya Sabha FAQ records that the House was first constituted on 3 April 1952 and first met on 13 May 1952, and describes it as a continuing chamber.
-
-
-## Parliamentary activity resources
-
-The Activity view links directly to official parliamentary resources. It does not copy activity records into the application.
+The History view links to Parliament Digital Library material. The Activity view links to official parliamentary resources and does not copy activity records into the app.
 
 - Lok Sabha: https://sansad.in/ls/siteMap
 - Lok Sabha House Business: https://sansad.in/ls/business
-- Lok Sabha Committee Members: https://sansad.in/ls/committee/committee-members
+- Lok Sabha Committees: https://sansad.in/ls/committee/committee-members
 - Rajya Sabha House Business: https://sansad.in/rs/house-business
 - Rajya Sabha Dashboard: https://sansad.in/rs/dashboard
 - Rajya Sabha Sitemap: https://sansad.in/rs/siteMap
